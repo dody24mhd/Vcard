@@ -56,13 +56,14 @@ body.slab {
 .main {
 	max-width: 390px; /* Card width = width + 60px (padding left and right). Change with the `.head .round {max-height: 330px;}` */
 	color: black; /* Font color */ /* Text */
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: transparent; /* let backdrop match vcard, seamless */
 	
 	width: 100%;
 	margin: auto;
 	text-align: center;
 	height: calc(100vh);
 	display: table;
+	position: relative;
 }
 
 .classic .main, body.classic.dark .main {
@@ -72,7 +73,7 @@ body.slab {
 
 body.dark .main {
 	color: white; /* Dark theme font color */ /* Text */
-	background-color: rgba(15, 15, 15, 0.5);
+	background-color: transparent; /* backdrop provides dim */
 }
 
 .vcard {
@@ -81,6 +82,22 @@ body.dark .main {
 	display: table-cell;
 	vertical-align: middle;
 }
+
+/* Backdrop that matches vcard tint for seamless look */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5); /* same as previous .main tint */
+    pointer-events: none;
+    z-index: 0;
+}
+
+body.dark::before {
+    background: rgba(15, 15, 15, 0.5);
+}
+
+.main { z-index: 1; }
 
 .vcard a, 
 .vcard a:link, 
