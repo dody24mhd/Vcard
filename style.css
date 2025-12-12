@@ -171,8 +171,11 @@ body.dark.background .vcard > .grid-x {
 .head .round img.qrcode {
 	display: block;
 	max-width: 85%;
+	max-height: 85%;
 	height: auto;
 	margin: 0; /* flex parent sudah center */
+	border-radius: 12px; /* samakan sudut avatar & QR seperti Dody */
+	object-fit: contain; /* pastikan proporsi konsisten di semua avatar */
 }
 	border-radius: 12px; /* soften all corners top and bottom */
 	overflow-y: hidden; 	
