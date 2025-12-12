@@ -159,13 +159,27 @@ body.dark.background .vcard > .grid-x {
 }
 
 .head .round {
-	max-height: 330px; /* Round height = card width - 60px (card padding). Change with the `.main {max-width: 390px;}` */
+	max-height: 300px; /* pendekkan tinggi round */
+	height: 300px !important; /* override inline height */
+	display: flex; /* center avatar/QR di tengah kotak */
+	align-items: center;
+	justify-content: center;
     
+
+/* Samakan ukuran dan centering untuk avatar & QR di dalam round */
+.head .round img.avatar,
+.head .round img.qrcode {
+	display: block;
+	max-width: 85%;
+	height: auto;
+	margin: 0; /* flex parent sudah center */
+}
 	border-radius: 12px; /* soften all corners top and bottom */
 	overflow-y: hidden; 	
 	-ms-overflow-style: none; 
 	scrollbar-width: none; 
 	overflow: -moz-scrollbars-none;
+	padding: 0; /* hilangkan semua padding di container round */
 }
 
 .head .round::-webkit-scrollbar {
@@ -205,8 +219,7 @@ body.dark .head .round.text {
     
 	padding: 0; /* no padding for full-body look */
 	display: block;
-	width: 100%;
-	height: auto;
+	/* ukuran dan margin kini diatur via .head .round img.qrcode */
 }
 
 /* Logo above avatar */
@@ -219,12 +232,15 @@ body.dark .head .round.text {
 
 /* Reduce gap between logo and avatar container */
 .head .round {
-	margin-top: 10px; /* add a bit more gap below logo */
+	margin-top: 0px; /* add a bit more gap below logo */
 }
 
 /* Soften avatar corners */
 #avatar {
 	border-radius: 12px;
+	max-width: 85%;
+	height: auto;
+	margin-bottom: 0; /* hilangkan jarak bawah avatar */
 }
 
 /* Move info and link icons slightly below the image */
@@ -234,7 +250,7 @@ body.dark .head .round.text {
 	bottom: auto;
 	padding-top: 0;
 	display: inline-block;
-	margin: 10px 8px 0; /* closer to avatar */
+	margin: 2px 8px 0; /* sangat dekat ke avatar */
 }
 
 .head .vcard-link, 
