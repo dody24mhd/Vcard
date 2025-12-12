@@ -115,6 +115,9 @@ body.dark.background::after {
 	max-width: inherit;
 	padding: 30px;
 	display: block; /* biarkan flex di .main melakukan centering */
+	max-height: 100dvh; /* cegah terpotong di bawah pada layar kecil */
+	overflow: auto; /* izinkan scroll internal bila konten melebihi layar */
+	padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px));
 }
 
 body.dark .vcard a,
@@ -316,7 +319,7 @@ body.dark .vcard h1 small {
 
 .vcard .social a {
 	display: inline-block;
-	margin: 15px 7px 0 7px;
+	margin: 12px 7px 6px 7px; /* sedikit rapat agar muat di perangkat kecil */
 }
 
 .vcard .social a:not([href]) {
