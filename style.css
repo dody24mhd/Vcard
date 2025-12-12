@@ -15,11 +15,8 @@ html, body {
 body {
 	font-family: 'Roboto', Arial, sans-serif; /* Text font */
 	font-size: 140%; /* Font size */ /* Text */
-	background-color: rgb(255, 255, 255);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; /* keep image scale consistent */
-	/* IMPORTANT: avoid background-attachment: fixed on mobile, causes jitter */
+	background: rgb(255, 255, 255) repeat center center fixed; /* Background */
+	background-size: cover;
 	padding: 0; 
 	margin: 0;
 	overflow: hidden; /* prevent background scroll causing overlay jitter */
@@ -44,20 +41,9 @@ body.dark {
 }
 
 body.dark.background {
-	background-image: url(backgroundcity.webp);
-	background-repeat: no-repeat;
-	background-position: center center;
+	background: url(backgroundcity.webp) repeat center center fixed; /* Background */
 	background-size: cover;
-	/* Avoid fixed attachment to prevent sudden zoom/resize on mobile */
 	background-color: rgb(15, 15, 15);
-}
-
-/* Mobile-specific fix: ensure no fixed backgrounds to prevent flicker */
-@media (max-width: 767px) {
-	body,
-	body.dark.background {
-		background-attachment: scroll;
-	}
 }
 
 body.condensed {
